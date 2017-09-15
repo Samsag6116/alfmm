@@ -3,8 +3,11 @@
   *  PROGRAMMER    : Sagar Patel
   *  FIRST VERSION : 13th SEP 2017
   *  DESCRIPTION   : I have written a simple c code to illustrate my concepts of data structure.
-  *			         It performs following basic operations 
-  *			 	          
+  *			         It performs following basic operations: 
+  *					 1) add_node    = Takes value from user and add it to the list
+  *					 2) print_list  = Display all the value from link list
+  *			 	     3) delete_node = Takes value from user that user want to delete and then 
+  *                                   delete that value from the list
   */
  
  //********************************* Header Files *****************************************************************************//
