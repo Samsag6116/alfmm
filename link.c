@@ -80,6 +80,80 @@
 		 current = current->next;
 	 }
  }
+ 
+  /*
+   *  FUNCTION      : delete_node()
+   *
+   *  DESCRIPTION   : This function delete a node from link list.
+   *
+   *  PARAMETERS    : Nothing has been passed
+   *  
+   *  RETUEN        : Does not return anything
+   */
+   
+ void delete_node()
+{
+	int value;
+	int found = 0;
+	node *prev = head;
+	node *now = head;
+
+	if(now == NULL)
+	{
+		printf("\n\n List is empty. \n\n");
+		return;
+	}
+
+	printf("\n\nEnter the value You want to delete : ");
+	scanf("%d",&value);
+
+
+	if(head->data == value)
+	{
+		node *new_head = head->next;
+		free(head);
+		head = new_head;
+		found = 1;
+		printf("\n\nValue Deleted Successfully\n\n");
+		return;
+	}
+	else
+	{
+
+		while(now->next != NULL)
+		{
+			if(now->data == value)
+			{
+				prev->next = now->next;
+				found = 1;
+				free(now);
+				printf("\n\nValue has been deleted Successfully\n\n");
+				return;
+			}
+			
+			prev = now;
+			now = now->next;
+			
+		}
+
+		if(now->data == value)
+		{
+			prev->next = NULL;
+			found = 1;
+			free(now);
+			printf("\n\nValue has been deleted Successfully\n\n");
+			//Make sure you change tail when you delete last node of the list
+			tail = prev;										
+			return;
+		}
+	}
+
+	if(found == 0)
+	{
+		printf("\n\nThe value you have entered is not found in the list\n\n");
+	}
+	return;
+}
   
  /*
  *  FUNCTION      : options()
@@ -96,7 +170,7 @@ void options()
 	printf("\n\n0 : To quit");
 	printf("\n1: To add a node");
 	printf("\n2: To print all the elements in list");
-
+	printf("\n3: To delete a node");
 }
 
 //********************************* Main Function  *************************************************************************//
@@ -118,7 +192,9 @@ void options()
 			 case 1: add_node();
 					 break;
 			 case 2: print_list();
-					 break;			
+					 break;		
+			 case 3: delete_node();
+					 break;					 
 				
 			 default: printf("There is no option available");
 		 }
